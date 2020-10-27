@@ -15,12 +15,16 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UsersListComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

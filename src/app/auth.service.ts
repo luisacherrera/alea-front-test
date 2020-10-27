@@ -6,17 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  apiBaseUrl = 'https://reqres.in/api';
+  apiBaseUrl = 'https://reqres.in/api/';
 
   constructor(
     private _httpClient: HttpClient
   ) { }
 
   login(user: any): Observable<any> {
-    return this._httpClient.post(`${this.apiBaseUrl}/login`, user)
+    return this._httpClient.post(`${this.apiBaseUrl}login`, user)
   }
 
   signup(user: any): Observable<any> {
-    return this._httpClient.post(`${this.apiBaseUrl}/signup`, user)
+    return this._httpClient.post(`${this.apiBaseUrl}signup`, user)
+  }
+
+  isLoggedIn() {
+    let token : string = localStorage.getItem('token');
+    return token && token != 'undefined';
   }
 }

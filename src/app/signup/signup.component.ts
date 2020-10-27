@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private _fb : FormBuilder,
-    private _authService : AuthService
+    private _authService : AuthService,
+    private _router : Router
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class SignupComponent implements OnInit {
       .subscribe({
         next: (response: any) => {
           console.log(response);
+          this._router.navigate([''])
         },
         error: (err: any) => {
           console.error(err);
