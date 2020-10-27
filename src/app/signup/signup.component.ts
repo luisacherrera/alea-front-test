@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,13 +14,22 @@ export class SignupComponent implements OnInit {
   });
 
   constructor(
-    private _fb : FormBuilder
+    private _fb : FormBuilder,
+    private _authService : AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.signupForm.value);
+    this._authService.signup(this.signupForm.value)
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+        },
+        error: (err: any) => {
+          console.error(err);
+        }
+      })
   }
 }
