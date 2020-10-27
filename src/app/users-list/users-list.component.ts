@@ -8,6 +8,7 @@ import { UsersService } from '../users.service';
 })
 export class UsersListComponent implements OnInit {
   users : Array<Object>;
+  p: number = 1;
 
   constructor(
     private _userService : UsersService
