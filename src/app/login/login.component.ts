@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,13 +9,14 @@ import { AuthService } from '../auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   @Output() userLogged: EventEmitter<any> = new EventEmitter();
 
   loginForm = this._fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
+  subscriptions: Array<any>;
 
   constructor(
     private _fb : FormBuilder,
@@ -22,11 +24,18 @@ export class LoginComponent implements OnInit {
     private _router : Router
   ) { }
 
-  ngOnInit(): void {
+  onSubmit(): void {
+    this.subscriptions = [
+      this.subscriptionHandler()
+    ]
   }
 
-  onSubmit() {
-    this._authService.login(this.loginForm.value)
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe);
+  }
+
+  subscriptionHandler(): Subscription {
+    return this._authService.login(this.loginForm.value)
       .subscribe({
         next: (response: any) => {
           localStorage.setItem('token', response.token);
