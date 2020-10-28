@@ -4,8 +4,10 @@
             <app-user-card [data]="user" (deletedUser)="removeElement($event)"></app-user-card>
         </li>
     </ul>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    <button mat-fab color="primary" aria-label="create a new user" [routerLink]="['/create']">
+    <div class="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <button class="createButton" mat-fab color="primary" aria-label="create a new user" [routerLink]="['/create']">
         <mat-icon>add_circle_outline</mat-icon>
     </button>
 </div>
