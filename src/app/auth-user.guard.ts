@@ -12,10 +12,10 @@ export class AuthUserGuard implements CanActivate {
   ) {}
 
   canActivate(): boolean {
-    if (this._authService.isLoggedIn) {
+    if (this._authService.isLoggedIn()) {
       return true
     } else {
-      this._router.navigate([''])
+      this._router.navigate(['/'])
       return false
     }
   }

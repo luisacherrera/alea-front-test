@@ -17,6 +17,9 @@
       <a mat-menu-item color="primary" [routerLink]="['/users']">Main</a>
       <a mat-menu-item color="primary" [routerLink]="['/create']">Create User</a>
     </mat-menu>
+    <button mat-mini-fab color="accent" (click)="logOff()">
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
   </header>
 </ng-template>
 <router-outlet (activate)="onActivate($event)"></router-outlet>

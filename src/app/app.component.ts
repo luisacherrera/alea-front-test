@@ -16,4 +16,8 @@ export class AppComponent {
   onActivate(component) {
     this.user = this._authService.isLoggedIn();
   }
+
+  logOff() {
+    localStorage.removeItem('token');
+  }
 }
