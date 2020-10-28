@@ -11,5 +11,7 @@
         <button type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">Log in</button>
     </form>
 
+    <p class="error" *ngIf="loginFail">This user does not have an active account. <a [routerLink]="['signup']">Sign up here</a></p>
+
     <p>Don't have an account? <a [routerLink]="['signup']">Sign up here</a></p>
 </div>

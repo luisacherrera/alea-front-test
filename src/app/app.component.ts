@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class AppComponent {
   user : boolean = false;
 
   constructor(
-    private _authService : AuthService
+    private _authService : AuthService,
+    private _router: Router
   ) {}
 
   onActivate(component) {
@@ -19,5 +21,6 @@ export class AppComponent {
 
   logOff() {
     localStorage.removeItem('token');
+    this._router.navigate(['/']);
   }
 }

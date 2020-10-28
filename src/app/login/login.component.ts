@@ -17,6 +17,7 @@ export class LoginComponent {
     password: ['', Validators.required]
   });
   subscriptions: Array<any> = [];
+  loginFail: boolean = false;
 
   constructor(
     private _fb : FormBuilder,
@@ -42,6 +43,7 @@ export class LoginComponent {
         },
         error: (err: any) => {
           console.error(err);
+          this.loginFail = true;
         }
       })
   }
