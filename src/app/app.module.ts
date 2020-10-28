@@ -20,6 +20,7 @@ import { SignupComponent } from './signup/signup.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
     SignupComponent,
     UsersListComponent,
     UserCardComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
