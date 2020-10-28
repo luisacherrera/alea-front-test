@@ -15,4 +15,12 @@ export class UsersService {
   getUsers(): Observable<any> {
     return this._httpClient.get(`${this.apiBaseUrl}users`);
   }
+
+  updateUser(id, data): Observable<any> {
+    return this._httpClient.put(`${this.apiBaseUrl}api/users/${id}`, data);
+  }
+
+  deleteUser(id): Observable<any> {
+    return this._httpClient.delete(`${this.apiBaseUrl}api/users/${id}`);
+  }
 }

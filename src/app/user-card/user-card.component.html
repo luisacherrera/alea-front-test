@@ -2,4 +2,12 @@
     <img src="{{ data.avatar }}" alt="avatar">
     <p>{{ data.first_name}} {{data.last_name }}</p>
     <p>{{ data.email }}</p>
+    <div class="actions">
+        <button mat-mini-fab color="primary" aria-label="edit an existing user" (click)="editUser(data.id)">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" aria-label="delete an existing user" (click)="deleteUser(data.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
 </div>

@@ -8,7 +8,7 @@ import { UsersService } from '../users.service';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-  users : Array<Object>;
+  users : Array<any>;
   p: number = 1;
   subscriptions: Array<any>;
 
@@ -32,5 +32,13 @@ export class UsersListComponent implements OnInit {
       .subscribe((res)=>{
         this.users = res.data;
       })
+  }
+
+  removeElement(id) {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].id === id) {
+        this.users.splice(i, 1);
+      }
+    }
   }
 }
