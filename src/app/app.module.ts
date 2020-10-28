@@ -12,7 +12,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -38,7 +39,8 @@ import { UserCardComponent } from './user-card/user-card.component';
     MatInputModule,
     MatIconModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

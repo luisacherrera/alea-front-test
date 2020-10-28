@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -10,16 +11,41 @@ export class UserCardComponent implements OnInit {
   @Input() data : any;
   @Output() deletedUser = new EventEmitter();
   subscriptions: Array<any> = [];
+  showEditor: boolean = false;
+  editForm = this._fb.group({
+    name: '',
+    job: ''
+  })
 
   constructor(
-    private _userService: UsersService
+    private _userService: UsersService,
+    private _fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
   }
 
-  editUser(id) {
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+    this.subscriptions.length = 0;
+  }
 
+  showEdit() {
+    this.showEditor = !this.showEditor;
+  }
+
+  editUser(id) {
+    let editSubscription = this._userService.updateUser(id, this.editForm.value)
+      .subscribe({
+        next: (response:any) => {
+          this.data.first_name = response.name;
+        },
+        error: (error:any) => {
+          console.error(error);
+        }
+      });
+    
+    this.handleSubscriptions(editSubscription);
   }
   
   deleteUser(id) {
