@@ -16,7 +16,7 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
-  subscriptions: Array<any>;
+  subscriptions: Array<any> = [];
 
   constructor(
     private _fb : FormBuilder,
@@ -25,9 +25,7 @@ export class LoginComponent {
   ) { }
 
   onSubmit(): void {
-    this.subscriptions = [
-      this.subscriptionHandler()
-    ]
+    this.subscriptions.push(this.subscriptionHandler());
   }
 
   ngOnDestroy(): void {

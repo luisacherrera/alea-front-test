@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -10,16 +12,14 @@ import { UsersService } from '../users.service';
 export class UsersListComponent implements OnInit {
   users : Array<any>;
   p: number = 1;
-  subscriptions: Array<any>;
+  subscriptions: Array<any> = [];
 
   constructor(
     private _userService : UsersService
   ) { }
 
   ngOnInit(): void {
-    this.subscriptions = [
-      this.subscribeUserService()
-    ]
+    this.subscriptions.push(this.subscribeUserService());
   }
 
   ngOnDestroy(): void {

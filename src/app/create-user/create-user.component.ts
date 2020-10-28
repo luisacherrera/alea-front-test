@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -8,12 +10,12 @@ import { UsersService } from '../users.service';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.scss']
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent {
   createForm = this._fb.group({
     name: '',
     job: ''
   });
-  subscriptions: Array<any>;
+  subscriptions: Array<any> = [];
   successCreate: boolean = false;
 
   constructor(
@@ -22,13 +24,7 @@ export class CreateUserComponent implements OnInit {
   ) { }
 
   onSubmit(): void {
-    this.subscriptions = [
-      this.subscriptionHandler()
-    ]
-  }
-
-  ngOnInit(): void {
-
+    this.subscriptions.push(this.subscriptionHandler());
   }
 
   ngOnDestroy(): void {
