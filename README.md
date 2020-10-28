@@ -1,6 +1,7 @@
 # AleaFrontTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+It uses https://reqres.in/ as the rest API for the whole project - log in into the application can be performed using the information provided in the docs. 
 
 ## Development server
 
