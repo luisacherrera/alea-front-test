@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 5em;
+
+        @media screen and (min-width: 48em) {
+            width: 50vw;
+        }
+    }
+
+    .error {
+        background-color: #F08080;
+        padding: 10px;
+        border-radius: 20px;
+    }
+}

@@ -1,0 +1,26 @@
+<div class="container">
+    <img src="{{ data.avatar }}" alt="avatar">
+    <p>{{ data.first_name}} {{data.last_name }}</p>
+    <p>{{ data.email }}</p>
+    <div class="actions">
+        <button mat-mini-fab color="primary" aria-label="edit an existing user" (click)="showEdit()">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" aria-label="delete an existing user" (click)="deleteUser(data.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <mat-card *ngIf="showEditor">
+        <form [formGroup]="editForm" (ngSubmit)="editUser(data.id)">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Job</mat-label>
+                <input matInput formControlName="job">
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary">Update</button>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+    <ul class="users">
+        <li class="user-detail" *ngFor="let user of users | paginate: { itemsPerPage: 3, currentPage: p }">
+            <app-user-card [data]="user" (deletedUser)="removeElement($event)"></app-user-card>
+        </li>
+    </ul>
+    <div class="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <button class="createButton" mat-fab color="primary" aria-label="create a new user" [routerLink]="['/create']">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>

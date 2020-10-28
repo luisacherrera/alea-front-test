@@ -1,0 +1,17 @@
+.container {
+    .users, .pagination {
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+    }
+
+    .users {
+        flex-wrap: wrap;
+    }
+
+    .createButton {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+}
