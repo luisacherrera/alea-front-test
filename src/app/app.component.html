@@ -10,9 +10,13 @@
 
 <ng-template #loggedIn>
   <header>
-    <button mat-flat-button color="primary">
+    <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item color="primary" [routerLink]="['/users']">Main</a>
+      <a mat-menu-item color="primary" [routerLink]="['/create']">Create User</a>
+    </mat-menu>
   </header>
 </ng-template>
 <router-outlet (activate)="onActivate($event)"></router-outlet>

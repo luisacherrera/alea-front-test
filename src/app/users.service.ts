@@ -23,4 +23,8 @@ export class UsersService {
   deleteUser(id): Observable<any> {
     return this._httpClient.delete(`${this.apiBaseUrl}api/users/${id}`);
   }
+
+  createUser(user): Observable<any> {
+    return this._httpClient.post(`${this.apiBaseUrl}api/users`, user);
+  }
 }

@@ -5,7 +5,7 @@
         </li>
     </ul>
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    <button mat-fab color="primary" aria-label="create a new user">
+    <button mat-fab color="primary" aria-label="create a new user" [routerLink]="['/create']">
         <mat-icon>add_circle_outline</mat-icon>
     </button>
 </div>

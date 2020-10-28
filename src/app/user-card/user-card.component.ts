@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -13,8 +13,8 @@ export class UserCardComponent implements OnInit {
   subscriptions: Array<any> = [];
   showEditor: boolean = false;
   editForm = this._fb.group({
-    name: '',
-    job: ''
+    name: ['', Validators.required],
+    job: ['', Validators.required]
   })
 
   constructor(
